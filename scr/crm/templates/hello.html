@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello</title>
+</head>
+<body>
+<!--这里写不写都无所谓，因为是在html := template.Must(template.ParseFiles("./templates/hello.html", "./templates/hello2.html"))-->
+<!--ctx.JSON(http.StatusOK, gin.H{-->
+<!--"html": html,-->
+<!--})-->
+<!--读取的是html-->
+<p>Hello {{.}}</p>
+</body>
+</html>

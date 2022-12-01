@@ -1,0 +1,183 @@
+
+
+
+go：
+
+
+把密钥路径放进去(终端方法)
+cd /Users/zoujunping/Desktop/macIDE全家桶激活法子/macjihuo2022/scripts
+运行下面方法就行，然后再打开，就不会提示要服务商地址码，因为是临时的，所以每天打开ide都需要终端执行一次
+bash install.sh
+
+
+GOLand:
+//代理
+r.SetTrustedProxies([]string{"192.168.1.2"})
+
+router := gin.Default()
+
+router.Run(":8080")
+
+ web用gin
+数据库练级用gorm
+
+
+
+
+
+在模块里安装gin
+cd /Users/zoujunping/GO学习/scr/crm
+go get -u github.com/gin-gonic/gin
+对应的/Users/zoujunping/go/pkg/mod也会下载荤多文件
+
+Go基础语法:
+
+https://bbs.csdn.net/topics/605440391
+gin语法：
+https://gin-gonic.com/docs/examples/multipart-urlencoded-binding/
+
+语法:
+https://haicoder.net/golang/golang-defer.html
+
+http.Pusher仅支持go1.8+
+
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+	"fmt"
+)
+相对路径：相对路径
+
+
+Gorm数据库操作
+https://www.w3cschool.cn/gormdoc/gormdoc-pv653ltf.html
+
+https://blog.csdn.net/logiee/article/details/126389204
+
+r.Run(":8080")
+
+information_schema信息模式
+performance_schema性能模式
+
+
+
+Navicat Premium 将主键设置为自动增长
+Open Database打开数据库
+Edit Database...编辑数据库...
+New Database...新建数据库...
+Delete Database删除数据库
+New Query新查询
+Console控制台
+Execute SQL File...执行SQL文件...
+Dump SQL File转储SQL文件
+Print Database...打印数据库...
+Reverse Database to Model...将数据库反向转换为模型...
+Find in Database...在数据库中查找...
+Refresh刷新
+
+
+
+
+如何用Navicat Premium连接并创建数据库？
+
+xitongbuluo.com/jiaocheng/68715.html
+
+
+
+mysql -uroot -p
+输入:12345678 会报错 得输入自己更改设置的新密码 123456才可以
+create database db1; 创建db1
+show databases; 显示db1
+use db1;   使用db1
+select *from userinfos; 选中表单userinfos并查看golang代码写入的字段数据
+SET PASSWORD FOR root@localhost = '123456';
+改了密码后以后再执行mysql -uroot -p就输入123456
+create database db1;
+create database db2;
+提示Query OK, 1 row affected (0.00 sec)—>意思就差创建成功了一个名为db1的数据库表(翻译查询OK, 1行受影响(0.00秒))
+要想看到，得选中数据库组名(MySql)—刷新
+create database db2;
+create database db3;
+create database db4;
+每执行一次就创建一个数据库
+show databases;
+use db1;
+select *from userinfos;
+加-A参数进入数据库
+ mysql -uroot -pwwwwww -A -e "use testdb;select * from t1;"
+ mysql -uroot -pwwwwww -A -e “use dbl;select * from userinfos;"
+不加-A参数进入数据库
+mysql -uroot -pwwwwww -e "use testdb;select * from t1;"
+mysql -uroot -pwwwwww -e “use dbl;select * from userinfos;"
+￼
+
+
+￼
+￼
+￼
+￼
+
+
+
+Go代码模型:
+
+
+package main
+
+import (
+	"fmt"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	//"time"
+)
+
+// 模型结构
+type StudentInsertModel struct {
+	//注意：key健必须首字母大写，不然下面赋值了和MySQL里小写字母的字段显示不出来
+	//gorm.Model
+	Id              int `gorm:"primaryKey"`
+	XueLi           string
+	Name            string
+	Age             int
+	Class           string
+	Sex             string
+	Height          int
+	PhysicalFitness string
+	School          string
+	Distance        string //距离
+}
+
+// 部分字段属性插入
+func PartialFieldPropertiesAreInserted() {
+	dsn := "root:123456@tcp(127.0.0.1:3306)/db1?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		fmt.Println(err)
+	}
+	db.AutoMigrate(&StudentInsertModel{})
+
+	//stu := StudentInsertModel{
+	//	Id:    2,
+	//	Name:  "xin",
+	//	Age:   20,
+	//	Class: "2班",
+	//	Sex:   "男",
+	//}
+	//xueLi: "本科"
+	stu := &StudentInsertModel{Id: 1, XueLi: "本科", Name: "we", Age: 2, Class: "2", Sex: "s", Height: 180, PhysicalFitness: "良好", School: "于都一中 ", Distance: "1.5km"}
+
+	var res = db.Create(&stu)
+
+	res.Select("Id", "Name").Create(stu)
+	if res.Error != nil { //判断是否插入数据出错
+		fmt.Println(res.Error)
+	}
+	db.Clauses() //关闭连接
+}
+
+打开不
+sudo spctl --master-disable
+
+
+
+

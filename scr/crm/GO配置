@@ -1,0 +1,125 @@
+
+  # # Go配置:
+终端运行
+# export PATH=/usr/local/go/bin:$PATH
+就把Go环境变量添加进来了，
+ 执行go version
+go version go1.19.1 darwin/amd64
+
+创建一个任意目录sd
+/Users/zoujunping/GO学习
+并且在下面创建3个文件夹
+bin :安放编译后的文件目录D
+pkg :安放编译后的文件目录
+Src:放所有Go代码和依赖
+crm
+ app.go
+#欢迎/发布
+
+1.4.2配置环境变量
+// Go安装目景
+export GOROOT=/usr/local/go
+//代码和编译之后的文件相关代码
+export GoPATH=/Users/zoujunping/GO学习
+// 存放编译之后的文件
+export GoBIN=/Users/zoujunping/GO学习/bin
+把这3行放到终端跑下 就可以生效了
+
+
+通过上面这种操作叫做临时配置，一旦终端关闭就失效了，
+所以得更改配置 ，去/Users/zoujunping/.zprofile吧这4句加上叫永久配置
+执行sudo vim ~/.zprofile
+source ~/.zprofile
+执行go version
+
+终端：
+去go项目路径下创建项目
+cd $GoPATH
+ls
+显示bin	pkg	scr
+cd src/
+ls
+mkdir crm
+ cd  crm/
+touch app.go
+vim app.go
+打印当前工作目录:pwd
+go代码
+package main
+import “fmt”
+func main {
+fmt.Printin("叫爸爸123”）
+}
+
+cat app1.go 或者cat app.go—>打印里面代码，在终端显示出来(打印内容)
+编译器运行内容:
+进去当前目录
+
+
+如果要跑其他go项目，必须终端再次输入pwd，然后输入新的go名才行 比如:go run app_q.go
+pwd:进入项目目录
+
+go是编译性语言
+
+第二种方法
+ go build  编译代码
+./crm 运行
+
+其实2种方式都一样 不过1是自动 ，2是手动
+
+方式3：
+
+bin:编写好的可执行文件
+首先要去下载Go编译器，然后进行安装，在安装目录下就是GO编译器相关的所有内容。
+mac: /etc/local/go/
+linux: /opt/go/
+windows: C: \go\
+
+
+在安装目录下有 bin目录中有一个go可执行文件，基于他来启动编译器。
+直接通过路径找到可执行文件去运行（麻烦）
+将 /etc/local/go/bin 目录添加PATH环境变量中。
+那么在终端就可以执行执行 go version，调用咱们安装的编译器。
+
+如果想要正确的使用go编译器，还需做一些相关的配置（其他语言)。
+创建目录，用于存放项目代码、编译后的可执行文件、编译后的包文件。
+XXXX
+bin
+pkg
+src
+
+环境变量
+GOROOT 编译器安装目录
+ GoPATH  用于存放项目代码，编译后的可执行文件
+GoBIN 编译后的可执行文件存放的目录。
+
+编写代码，然后进行。
+写了两个项目：
+crm，编译后生成一个可执行文件。
+utils,编译后生成一个包文件。 （公共的包文件，封装好提供给别人用）
+
+运行项目:
+ go run  :运行前先编译，编译后的文件放系统临时目录
+go build  ：自己手动编译（和上面的本质相同）
+go install 生成可执行+包文件，并且会将编译后的文件放在bin/pkg目录。
+
+
+输出:
+在终端将想要展示的数据显示出来，例如：  欢迎登录，请输入用户名登
+2大类
+ 1。内置函数
+print
+println
+
+2 .fmt包（推荐） —>内置函数输入官方后期不保证还能用，所以还是用2号，
+fmt.Print
+fmt.Printin
+
+扩展：进程里有 stdin/stdout/stderr
+
+报错:go: cannot find main module, but found .git/config in /Users/zouzeyu/go/src/github.com/xxx/goblog
+to create a module there, run:
+go mod init
+执行go mod init crm就行了
+
+
