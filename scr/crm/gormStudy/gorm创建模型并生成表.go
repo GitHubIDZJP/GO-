@@ -1,10 +1,13 @@
-package main
+package gormStudy
 
 import (
 	"fmt"
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"
+)
+
+import (
+	"gorm.io/driver/mysql"
 )
 
 // 定义模型

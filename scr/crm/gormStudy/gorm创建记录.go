@@ -1,4 +1,4 @@
-package main
+package gormStudy
 
 import (
 	"fmt"
@@ -40,7 +40,7 @@ type Person_sd struct {
 	Age int
 }
 
-func gorm_Creating_Record() {
+func Gorm_Creating_Record() {
 	// 连接数据库
 	dsn := "root:123456@tcp(127.0.0.1:3306)/db1?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

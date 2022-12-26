@@ -28,38 +28,50 @@ func SecureJSONExample() {
 	// r.SecureJsonPrefix(")]}',\n")
 
 	r.GET("/someJSON", func(c *gin.Context) {
-		var Name = []string{"刘强", "王维", "周自强", "毛泽东", "周恩来", "任弼时", "刘强东", "欧阳丽丽", "王五", "黄志平"}
-		var Title = []string{"锲而不舍", "破釜沉舟", "坚韧不拔", "坚定不移", "事在人为", "投笔从戎", "坚持不懈", "卷土重来", "百折不挠", "晨钟暮鼓"}
-		//var ChinaFestival
+		var NameArr = []string{"刘强", "王维", "周自强", "毛泽东", "周恩来", "任弼时", "刘强东", "欧阳丽丽", "王五", "黄志平"}
+		var TitleArr = []string{"锲而不舍", "破釜沉舟", "坚韧不拔", "坚定不移", "事在人为", "投笔从戎", "坚持不懈", "卷土重来", "百折不挠", "晨钟暮鼓"}
+
 		arr_a := [10]TestModel{} //定义一个数组长度为10的数组变量arr_a
-
+		//for循环
 		var k int
+		//国庆节
+		var random_NationalDay int64
+		//最外层
 		for k = 0; k < 10; k++ {
-
 			//随机值区间:
-			var res_NationalDay int64
-			for i := 0; i < 50; i++ {
-				res_NationalDay = getRandomWithNo(5, 1000)
+			for i := 0; i < len(arr_a); i++ {
+				random_NationalDay = getRandomWithNo(5, 1000) //国庆节数字:5-1000之间随机
 				// res := getRandomWithAll(5, 10)
 				// res := getRandomWithMin(5, 10)
 				// res := getRandomWithMax(5, 10)
 
 			}
 
+			/**
+			"Coupons": [
+			                    {
+			                        "NationalDay": 471,
+			                        "MidAutumnFestival": 26
+			                    }
+			                ]
+			*/
+			//中秋节
 			ChinaFestival := ArrCCoupons{
-				NationalDay:       res_NationalDay,
-				MidAutumnFestival: rand.Intn(100),
+				NationalDay:       random_NationalDay,
+				MidAutumnFestival: rand.Intn(100), //随机数字
 			}
+			//key为Coupons的数组-->定义一个数组，数组里有key值NationalDay(国庆节)和MidAutumnFestival(中秋节)
 			arr_Festival := []ArrCCoupons{ChinaFestival}
-			var schoolStr = strconv.Itoa(k)
-			SchoolSufficStr := "中"
-			SchoolName := schoolStr + SchoolSufficStr
+			var schoolStr = strconv.Itoa(k)           //数组转字符串，k是外层for循环的索引，0 - 10(数组长度)
+			SchoolSufficStr := "中"                    //key位school的后缀字符串
+			SchoolName := schoolStr + SchoolSufficStr //拼接字符串 (几中)
+			//data层
 			arr_a[k] = TestModel{
-				Name[k],
-				rand.Intn(100),
-				Title[k],
-				SchoolName,
-				arr_Festival,
+				NameArr[k],     //获取每个名字数组NameArr的下标K值
+				rand.Intn(100), //年龄随机数字 0-100之间为data层每个下标值
+				TitleArr[k],    //获取数组的下标title
+				SchoolName,     //获取从0到10的正序值 0中到10中
+				arr_Festival,   //又是一个数组字典,字典里面分别有国庆节和中秋节2个key
 			}
 			fmt.Printf("数组下标[%d] = %d\n", k, arr_a[k])
 		}

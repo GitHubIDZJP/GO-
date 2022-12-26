@@ -1,10 +1,5 @@
 package main //声明main包，表明当前是一个可执行程序
-import (
-	//导入外部包-->模块函数名必须大写开头
-	"crm/function1"
-	"crm/function2"
-	"crm/ginModule"
-)
+import "crm/ginDemo"
 
 //"GO学习/scr/crm/test/common/message"
 
@@ -18,8 +13,8 @@ func main() {
 
 	//CEMTERComMain_sd()
 	//调用外部的函数
-	function1.Function1000()
-	function2.Function2()
+	//function1.Function1000()
+	//function2.Function2()
 	//gin官网:
 
 	//ginModule.Redirection() //重定向
@@ -34,7 +29,7 @@ func main() {
 	//ginModule.ProvideStaticFile() //加载模版文件夹里的HTML
 	//ginModule.FeedDataFromTheReader() //从阅读器提供数据
 	//ginModule.SecureJSON() //安全json---->
-	//ginModule.SecureJSONExample() //secure(安全)json---->写了个Api
+
 	//ginModule.RunMultipteServer() //运行多个服务
 
 	//ginModule.SearchStrParameter() //查询字符串参数
@@ -83,7 +78,7 @@ func main() {
 	//ginModule.MultipartUrlBind() //Multipart/Urlencoded 绑定
 	//ginModule.JSONP() //使用 JSONP跨域
 
-	ginModule.ServerPush() //HTTP2 服务器推送
+	//ginModule.ServerPush() //HTTP2 服务器推送
 	//语法学习
 	//grammarLearning.Init_variable() //变量
 	//grammarLearning.OpenLocalFile()//打开本地文件，并且在终端打印文本内容
@@ -91,9 +86,11 @@ func main() {
 	//grammarLearning.MainApi() //结构体
 
 	//gin框架demo
+	//ginModule.SecureJSONExample() //secure(安全)json---->写了个Api
 	//ginDemo.MainStudentApi() //学生接口
 	//ginDemo.Api01()
-	//ginDemo.RootMain()
+	//ginDemo.DoubleStructure()
+	ginDemo.SingleStructure() //单层结构
 	//ginDemo.BashRequestFramework()// 基础请求框架
 	//ginDemo.MainLogin()
 
@@ -108,14 +105,15 @@ func main() {
 	*/
 	//ginModule.AsciiJSON_Api()
 
-	ginModule.QueryParams()
+	//ginModule.QueryParams()
 
 	//bashRequestFramework() //基础网络框架
 	//post 请求Api
 
 	//postRequest()
-	//gorm1() //gorm快速入门--增删改查
-	//gorm2() //gorm声明model
+	//gormStudy.Gorm_association_gl() //	gorm1() //gorm快速入门--增删改查
+	//gormStudy.Gorm_Creating_Record()
+	//gormStudy.Gorm2() //gorm声明model
 	//gorm3()//gorm模型使用
 	//gorm4() //gorm模型加强
 	//gorm5() //gorm模型加强1

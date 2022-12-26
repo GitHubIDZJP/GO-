@@ -1,4 +1,4 @@
-package main
+package gormStudy
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ type Classes struct {
 //var db *gorm.DB
 
 // 表关联
-func gorm_association_gl() {
+func Gorm_association_gl() {
 
 	dsn := "root:123456@tcp(127.0.0.1:3306)/db1?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
